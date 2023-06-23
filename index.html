@@ -1,33 +1,71 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pedra,Papel,Tesoura</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedra,Papel,Tesoura</title>
+  </head>
 
-<body>
-  <style>
-    .player-options img{
-      max-width: 200px; /*diminui o tamanho da figura*/
-      opacity: 0.3; /*figura fica opaca*/
-      cursor: pointer; /*cursor vai selecionar a figura*/
-    }
-  </style>
+  <body>
+    <style>
+      .player-options img,
+      .enemy-options img {
+        max-width: 200px; /*diminui o tamanho da figura*/
+        opacity: 0.3; /*figura fica opaca*/
+        cursor: pointer; /*cursor vai selecionar a figura*/
+      }
 
-  <h1 style="text-align: center;">Pedra-Papel-Tesoura</h1>
+      .player-options,
+      .enemy-options {
+        /*distancia entre as duas figuras*/
+        width: 50%;
+      }
 
-  <div class="player-options">
-    <div><img src="pedra.jpg" /></div> <!--img pedra-->
-    <div><img src="mão.jpg" /></div> <!--img mão-->
-    <div><img src="Sem título.jpg" /></div> <!--img tesoura-->
-  </div> <!--player-options-->
+      .align {
+        display: flex; /*um ao lado do outro*/
+      }
+    </style>
 
-  <div class="enemy-options">
-    <div><img src="pedra.jpg" /></div> <!--img pedra-->
-    <div><img src="mão.jpg" /></div> <!--img mão-->
-    <div><img src="Sem título.jpg" /></div> <!--img tesoura-->
-  </div> <!--enemy-options-->
-  
-</body>
+    <h1 style="text-align: center">Pedra-Papel-Tesoura</h1>
+
+    <div class="align">
+      <div class="player-options">
+        <div><img src="pedra.jpg" /></div>
+        <!--img pedra-->
+        <div><img src="mão.jpg" /></div>
+        <!--img mão-->
+        <div><img src="Sem título.jpg" /></div>
+        <!--img tesoura-->
+      </div>
+      <!--player-options-->
+
+      <div class="enemy-options">
+        <div><img src="pedra.jpg" /></div>
+        <!--img pedra-->
+        <div><img src="mão.jpg" /></div>
+        <!--img mão-->
+        <div><img src="Sem título.jpg" /></div>
+        <!--img tesoura-->
+      </div>
+      <!--enemy-options-->
+    </div>
+    <!--align-->
+
+    <script>
+      var elementos = document.querySelectorAll(".player-options div > img");
+
+      function resetOpacityPlayer() {
+        for (var i = 0; i < elementos.length; i++) {
+          elementos[i].style.opacity = 0.3;
+        }
+      }
+
+      for (var i = 0; i < elementos.length; i++) {
+        elementos[i].addEventListener("click", function (t) {
+          resetOpacityPlayer();
+          t.target.style.opacity = 1;
+        });
+      }
+    </script>
+  </body>
 </html>
